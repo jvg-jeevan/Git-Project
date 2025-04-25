@@ -41,6 +41,28 @@ class LinkedList:
         temp.next = new_node
 
 
+
+    def insert_after(self, data: int, key: int) -> None:
+        """Inserting a node after the given the node of the linked list"""
+        # create a temp node with head address
+        temp = self.head
+        # iterate through the list if node found break out of loop if not found then break out of loop
+        while temp != None:
+            if temp.data == key:
+                break
+            temp = temp.next
+        # if it has reached last node i.e node not found
+        if temp == None:
+            print("\nThe node entered is not present in the linked list!")
+        else:
+            # if node found then create a new_node
+            new_node = Node(data)
+            # assign next of temp i.e previous node to the new node 
+            new_node.next = temp.next
+            # assign the new_node address to the next of temp 
+            temp.next = new_node
+
+
    
     def start(self)-> None:
         system('cls')
