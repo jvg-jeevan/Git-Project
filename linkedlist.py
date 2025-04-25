@@ -21,6 +21,26 @@ class LinkedList:
         new_node.next = self.head
         # change the head value to new_node
         self.head = new_node
+
+
+
+    def insert_end(self, data: int) -> None:
+        """Inserting the node at the end of the linked list"""
+        # create a new node
+        new_node = Node(data)
+        # assign the head to temp
+        temp = self.head
+        # base condition: if list is empty, then assign the new_node to head
+        if temp == None:
+            self.head = new_node
+            return
+        # move until last node by checking next field of all nodes
+        while temp.next != None:
+            temp = temp.next
+        # assign the new_node address to the last node of the list
+        temp.next = new_node
+
+
    
     def start(self)-> None:
         system('cls')
