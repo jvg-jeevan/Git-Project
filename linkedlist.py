@@ -6,12 +6,9 @@ class Node:
         self.next = None
     
 
-
 class LinkedList:
     def __init__(self):
         self.head = None        
-
-
 
     def insert_begin(self, data: int) -> None:
         """Inserting the node at the beginning of the linked list"""
@@ -21,8 +18,6 @@ class LinkedList:
         new_node.next = self.head
         # change the head value to new_node
         self.head = new_node
-
-
 
     def insert_end(self, data: int) -> None:
         """Inserting the node at the end of the linked list"""
@@ -39,8 +34,6 @@ class LinkedList:
             temp = temp.next
         # assign the new_node address to the last node of the list
         temp.next = new_node
-
-
 
     def insert_after(self, data: int, key: int) -> None:
         """Inserting a node after the given the node of the linked list"""
@@ -61,9 +54,25 @@ class LinkedList:
             new_node.next = temp.next
             # assign the new_node address to the next of temp 
             temp.next = new_node
+        
+    def insert_before(self, data: int, key: int) -> None:
+        """Inserting a node before the given the node of the linked list"""
+        # create a temp node with head address
+        temp = self.head
+        # iterate through the list if node found break out of loop if not found then break out of loop
+        while temp != None:
+            if temp.data == key:
+                break
+            prev = temp
+            temp = temp.next
+        # if it has reached last node i.e node not found
+        if temp == None:
+            print("\nThe node entered is not present in the linked list!")
+        else:
+            new_node = Node(data)
+            new_node.next = temp
+            prev.next= new_node
 
-
-   
     def start(self)-> None:
         system('cls')
         while True:
@@ -131,8 +140,6 @@ class LinkedList:
                 break
             else:
                 print("Enter valid input!")
-
-
 
 LL1 = LinkedList()
 LL1.start()
