@@ -104,7 +104,7 @@ class LinkedList:
         else:
             self.head = self.head.next
             print("\nThe first node has been deleted!")
-    
+
     def delete_node(self, key):
         """Deleting the particular node of the LinkedList"""
         # initialize temp with head
