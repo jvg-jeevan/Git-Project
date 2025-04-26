@@ -114,8 +114,7 @@ class LinkedList:
             # assign the next of the head to next and free temp
             self.head = temp.next
             temp = None
-            print(f"\nThe node {key} has been deleted")
-            
+            print(f"\nThe node {key} has been deleted")    
         else:
             # create a temporary prev node to store the previous node data
             prev = None
@@ -134,6 +133,73 @@ class LinkedList:
                 # free the temp node
                 temp = None
                 print(f"\nThe node {key} has been deleted")
+
+    def make_last_first(self) -> None:
+        """Moving the last node of the LinkedList to first node"""
+        # if list is empty
+        if self.head == None:
+            print("\nLinkedList is empty!")
+        # if the LinkedList contain only one node then no movement
+        elif self.head.next == None:
+            print("\nLinkedList has only one Node!")
+        else:
+            # initialize temp node with head data
+            temp = self.head
+            # move till last node
+            while temp.next.next != None:
+                temp = temp.next
+            # take the address of the last node to last_node
+            last_node = temp.next
+            # set the link field of the second last node to None
+            temp.next = None
+            # set the link of the head to make new head link 
+            last_node.next = self.head
+            self.head = last_node
+            # print the linkedlist
+            print("\nLast node moved to first node successfully!")
+            self.print_list()
+
+    def make_first_last(self) -> None:
+        """Move the First node to the last position"""
+        # if LinkedList is empty
+        if self.head == None:
+            print("\nLinkedList is empty!")
+        # if LinkedList has only one node
+        elif self.head.next == None:
+            print("\nLinkedList has only one node!")
+        # if more than one node
+        else:
+            # copy head to first_node
+            first_node = self.head
+            # move head to next position
+            self.head = self.head.next
+            # unlink the first_node link part
+            first_node.next = None
+            # initialize temp with head value
+            temp = self.head
+            # move to last node
+            while temp.next != None:
+                temp = temp.next
+            # assign the first_node link to last node link part
+            temp.next = first_node
+            print("\nFirst node moved to last node successfully!")
+            self.print_list()
+
+    def print_list(self) -> None:
+        """Traversing and printing the nodes in the Linked List"""
+        print()
+        if self.head == None:
+            print("LinkedList is empty!")
+        # if list is not empty then take n = self.head for easy reference
+        else:
+            temp = self.head
+            while temp != None:
+                print(temp.data, end= "")
+                # if there is next value then it prints -> next is none or last node it won't print ->
+                if temp.next != None:
+                    print(" -> ", end= "")
+                temp = temp.next
+        print()
 
     def start(self)-> None:
         system('cls')
