@@ -72,6 +72,68 @@ class LinkedList:
             new_node = Node(data)
             new_node.next = temp
             prev.next= new_node
+        
+    def delete_last(self) -> None:
+        """Deleting last node of the linked list"""
+        # if head is None there is no node to delete
+        if self.head == None:
+            print("\nThe LinkedList is empty, element cannot be deleted!")
+        # if list has only one node then assign head as None
+        elif self.head.next == None:
+            self.head = None
+            print("\nThe last node has been deleted!")
+        else:
+            # create a temp node to store the head of the node
+            temp = self.head
+            # move to the last node by checking the next of each node is none
+            while temp.next != None:
+                # create a previous node for the last node to store the value
+                prev = temp
+                temp = temp.next
+            # set the next of prevoious node to none so that last node is deleted
+            temp = None
+            prev.next = None
+            print("\nThe last node has been deleted!")
+
+    def delete_first(self) -> None:
+        """Deleting first node of the linked list"""
+        # if linkedlist is empty
+        if self.head == None:
+            print("\nThe LinkedList is empty, element cannot be deleted!")
+        # if element is present, then assign next of head to head
+        else:
+            self.head = self.head.next
+            print("\nThe first node has been deleted!")
+    
+    def delete_node(self, key):
+        """Deleting the particular node of the LinkedList"""
+        # initialize temp with head
+        temp = self.head
+        # if the node to be deleted is first node
+        if temp != None and temp.data == key:
+            # assign the next of the head to next and free temp
+            self.head = temp.next
+            temp = None
+            print(f"\nThe node {key} has been deleted")
+            
+        else:
+            # create a temporary prev node to store the previous node data
+            prev = None
+            # move until key is found
+            while temp != None and temp.data != key:
+                # assign the temp to prev 
+                prev = temp
+                temp = temp.next
+
+            # if the node is not found and reached the last node
+            if temp == None:
+                print(f"\n{key} node is not in the list, cannot delete!")
+            else:
+                # assign the prev node with next of the deleted node
+                prev.next = temp.next
+                # free the temp node
+                temp = None
+                print(f"\nThe node {key} has been deleted")
 
     def start(self)-> None:
         system('cls')
